@@ -21,6 +21,7 @@ import com.netset.service.ProductService;
 import com.netset.util.Constants;
 
 @RestController
+@RequestMapping("/spring/assignment")
 public class ProductController {
 	private ProductService productService = new ProductService();
 
@@ -32,7 +33,8 @@ public class ProductController {
 		productService.addProduct(productObj);
 		return new ResponseEntity<>("Product Added Succesfully", HttpStatus.CREATED);
 	}
-
+	
+	@RequestMapping(value = "/getProduct", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ResponseEntity<?> getProduct(@RequestParam String name, @RequestParam String color,
 			@RequestParam String category) {
 		Product prdct = new Product();
