@@ -1,0 +1,37 @@
+buildscript {
+   ext {
+      springBootVersion = '1.5.8.RELEASE'
+   }
+   repositories {
+      mavenCentral()
+   }
+dependencies {
+      classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+   }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'application'
+
+group	 = 'Assignment'
+sourceCompatibility = 1.8
+mainClassName = "com.netset.SpringBootApplication"
+
+repositories {
+   mavenCentral()
+}
+dependencies {
+   compile('org.springframework.boot:spring-boot-starter-web')
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+   compile('mysql:mysql-connector-java')
+   
+   // https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload
+   compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+   // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.7'
+   
+   
+ 
+}
