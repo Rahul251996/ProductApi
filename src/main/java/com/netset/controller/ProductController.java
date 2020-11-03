@@ -25,7 +25,7 @@ import com.netset.util.Constants;
 public class ProductController {
 	private ProductService productService = new ProductService();
 
-	@RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.ALL_VALUE)
 	public ResponseEntity<Object> addProduct(@RequestParam(required = true, value = "image") MultipartFile Image,
 			@RequestParam String name, @RequestParam String category, @RequestParam String color,
 			@RequestParam int price) throws IOException {
@@ -33,8 +33,8 @@ public class ProductController {
 		productService.addProduct(productObj);
 		return new ResponseEntity<>("Product Added Succesfully", HttpStatus.CREATED);
 	}
-	
-	@RequestMapping(value = "/getProduct", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+
+	@RequestMapping(value = "/getProduct", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.ALL_VALUE)
 	public ResponseEntity<?> getProduct(@RequestParam String name, @RequestParam String color,
 			@RequestParam String category) {
 		Product prdct = new Product();
